@@ -1,3 +1,4 @@
+require "pry"
 require_relative '../config/environment.rb'
 # require_relative '../app/models/cult.rb'
 # require_relative '../app/models/followers.rb'
@@ -25,10 +26,7 @@ f4=Follower.new("Karen",100,"Call the manager")
 c1.recruit_follower(f1)
 c2.recruit_follower(f1)
 c1.recruit_follower(f3)
-Cult.all
-c1.cult_population
-Cult.find_by_location("NYC")
-Follower.all
+
 
 f4.join_cult(c3)
-BloodOath.first_oath
+binding.pry

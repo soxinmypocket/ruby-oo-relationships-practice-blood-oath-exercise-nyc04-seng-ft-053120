@@ -13,7 +13,7 @@ class BloodOath
         @@all
     end
     def self.first_oath
-        binding.pry
+        
         self.all[0].follower
     end
 end

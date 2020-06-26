@@ -11,22 +11,23 @@ class Cult
         @@all<<self
     end
     def recruit_follower(follower)
-        BloodOath.new(self,follower)
-        Follower.all.each{|followers|
-        if(followers==follower)
-        followers.cults.push(self)
-        end
-    }
+        if !BloodOath.all.find {|blood_oaths| blood_oaths.cult == self && blood_oaths.follower == follower }
+            BloodOath.new(self, follower)
+            follower.cults.push(self)
+            else 
+            "#{follower.name} is part of this cult."
+            end 
     end
     def cult_population
-        Follower.all.select{|followers| followers.cults.include?(self)}.count
+        BloodOath.all.select{|blood_oaths| blood_oaths.cult==self }.count
     end
     def self.all
         #binding.pry
         @@all
     end
     def self.find_by_name(cult)
-        Cult.all.find{|cults| cults.name==cult}
+        binding.pry
+        self.all.find{|cults| cults.name==cult}
     end
     def self.find_by_location(location)
         self.all.select{|cults|cults.location==location}

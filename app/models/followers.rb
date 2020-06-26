@@ -11,8 +11,12 @@ class Follower
         @cults=[]
     end
     def join_cult(cult)
-        BloodOath.new(cult,self)
-        self.cults.push(cult)
+        if !BloodOath.all.find {|blood_oaths| blood_oaths.cult == cult && blood_oaths.follower == self }
+            BloodOath.new(cult, self)
+            self.cults << cult 
+        else 
+            "You are already part of #{cult.name}."
+            end 
     end
     def self.all
         @@all
